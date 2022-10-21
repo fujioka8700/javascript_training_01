@@ -12,7 +12,31 @@
 </head>
 
 <body>
-    <button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button><button>ぼたん</button>
+    <p>選択した文字 <span id="span1"></span></p>
+    <form name="form1">
+        <label for="foo">
+            <input id="foo" type="radio" name="example" value="Foo" checked /> foo
+        </label>
+        <label for="bar">
+            <input id="bar" type="radio" name="example" value="Bar" /> bar
+        </label>
+    </form>
+    <input type="button" value="ボタン" onclick="clickBtn1()" />
+
+    <script>
+        function clickBtn1() {
+            let str = "";
+            const example1 = document.form1.example;
+
+            for (let i = 0; i < example1.length; i++) {
+                if (example1[i].checked) { //(example1[i].checked === true)と同じ
+                    str = example1[i].value;
+                    break;
+                }
+            }
+            document.getElementById("span1").textContent = str;
+        }
+    </script>
 </body>
 
 </html>
