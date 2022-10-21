@@ -12,29 +12,25 @@
 </head>
 
 <body>
-    <p>選択した文字 <span id="span1"></span></p>
+    <p>選択した値 <span id="span1"></span></p>
     <form name="form1">
-        <label for="foo">
-            <input id="foo" type="radio" name="example" value="Foo" checked /> foo
-        </label>
-        <label for="bar">
-            <input id="bar" type="radio" name="example" value="Bar" /> bar
-        </label>
+        <label><input type="checkbox" name="chk1" value="a" checked />a</label>
+        <label><input type="checkbox" name="chk1" value="b" />b</label>
+        <label><input type="checkbox" name="chk1" value="c" />c</label>
     </form>
-    <input type="button" value="ボタン" onclick="clickBtn1()" />
+    <input type="button" value="click" onclick="clickBtn1()" />
 
     <script>
         function clickBtn1() {
-            let str = "";
-            const example1 = document.form1.example;
+            const arr = [];
+            const chk1 = document.form1.chk1;
 
-            for (let i = 0; i < example1.length; i++) {
-                if (example1[i].checked) { //(example1[i].checked === true)と同じ
-                    str = example1[i].value;
-                    break;
+            for (let i = 0; i < chk1.length; i++) {
+                if (chk1[i].checked) { //(chk1[i].checked === true)と同じ
+                    arr.push(chk1[i].value);
                 }
             }
-            document.getElementById("span1").textContent = str;
+            document.getElementById("span1").textContent = arr;
         }
     </script>
 </body>
