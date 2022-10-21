@@ -1,13 +1,18 @@
-const element = document.querySelector('.square');
+// ハンドラーは foo のスコープ外に定義する
+const handleResize = () => {
+    console.log('foo')
+};
 
-element.addEventListener('mouseover', function(event) {
-    this.classList.toggle('radius');
-});
+function foo() {
+    // 初回実行時はまだハンドラーが登録されていないが、
+    // removeEventListener はマッチする関数がなくてもエラーにはならない
+    window.removeEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize);
+    // ...
+}
 
-element.addEventListener('mouseleave', function(event) {
-    this.classList.toggle('radius');
-});
+const btn = document.querySelector('button');
 
-element.addEventListener('click', event => {
-    console.log(this)
-});
+btn.addEventListener('click', foo());
+btn.addEventListener('click', foo());
+btn.addEventListener('click', foo());
