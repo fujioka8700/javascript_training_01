@@ -1,18 +1,15 @@
-// ハンドラーは foo のスコープ外に定義する
-const handleResize = () => {
-    console.log('foo')
-};
+const one = document.querySelector('#one');
+one.addEventListener('click', function (e) {
+    console.log('One handler', e.target);
+});
 
-function foo() {
-    // 初回実行時はまだハンドラーが登録されていないが、
-    // removeEventListener はマッチする関数がなくてもエラーにはならない
-    window.removeEventListener('resize', handleResize);
-    window.addEventListener('resize', handleResize);
-    // ...
-}
+const two = document.querySelector('#two');
+two.addEventListener('click', function (e) {
+    console.log('Two handler', e.target.id);
+});
 
-const btn = document.querySelector('button');
-
-btn.addEventListener('click', foo());
-btn.addEventListener('click', foo());
-btn.addEventListener('click', foo());
+const three = document.querySelector('#three');
+three.addEventListener('click', function (e) {
+    e.stopPropagation();
+    console.log('Three handler', e.target.id);
+});

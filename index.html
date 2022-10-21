@@ -12,9 +12,21 @@
 </head>
 
 <body>
-    <div>
-        <button>ボタン</button>
+    <div id="one">
+        #one
+        <div id="two">
+            #two
+            <div id="three">
+                #three
+            </div>
+        </div>
     </div>
+    <script>
+        document.querySelector('button').addEventListener('click', function(){
+            console.log('val')
+        })
+    </script>
+    <button>ぼたん</button>
 </body>
 
 </html>
