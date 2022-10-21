@@ -12,26 +12,23 @@
 </head>
 
 <body>
-    <p>選択した値 <span id="span1"></span></p>
-    <form name="form1">
-        <label><input type="checkbox" name="chk1" value="a" checked />a</label>
-        <label><input type="checkbox" name="chk1" value="b" />b</label>
-        <label><input type="checkbox" name="chk1" value="c" />c</label>
-    </form>
-    <input type="button" value="click" onclick="clickBtn1()" />
+    <label>アイスクリームの味を選択してください。
+        <select class="ice-cream" name="ice-cream">
+            <option value="">1 つ選択してください …</option>
+            <option value="chocolate">チョコレート</option>
+            <option value="sardine">イワシ</option>
+            <option value="vanilla">バニラ</option>
+        </select>
+    </label>
+    <div class="result"></div>
 
     <script>
-        function clickBtn1() {
-            const arr = [];
-            const chk1 = document.form1.chk1;
+        const selectElement = document.querySelector('.ice-cream');
 
-            for (let i = 0; i < chk1.length; i++) {
-                if (chk1[i].checked) { //(chk1[i].checked === true)と同じ
-                    arr.push(chk1[i].value);
-                }
-            }
-            document.getElementById("span1").textContent = arr;
-        }
+        selectElement.addEventListener('change', (event) => {
+            const result = document.querySelector('.result');
+            result.textContent = `${event.target.value}が好きですね`;
+        });
     </script>
 </body>
 
