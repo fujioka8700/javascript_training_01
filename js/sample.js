@@ -1,22 +1,26 @@
-const data = {
-    firstName: '田中',
-    lastName: '太郎',
-    email: 'tarou@example.jp',
+const objOne = {
+    greeting: function (name) {
+        return `Hello, ${name}さん`;
+    }
 };
 
-function getFullName({firstName, lastName}) {
-    // return '田中 太郎';
-    return firstName + ' ' + lastName;
-}
+console.log(objOne.greeting('太郎'));
 
-console.log(getFullName(data));
+const objTwo = {
+    greeting(name) {
+        return `Hello, ${name}くん`;
+    }
+};
 
-/////////////////////////////////
-// 取り出すキーが実引数に、存在しなくてもエラーにはならない
+console.log(objTwo.greeting('花子'));
+
+///////////////////////////////
+
+const name = 'John Lennon'
+
 const obj = {
-    hello: 'world'
+    // name: name,
+    name
 };
 
-const func = ({name}) => console.log(name);
-
-func(obj);
+console.log(obj);
