@@ -1,24 +1,16 @@
-function Product(name, price) {
+var Human = function(name) {
     this.name = name;
-    this.price = price;
-}
+};
 
-Product.prototype.hello = function() {
-    console.log('hello')
-}
+Human.prototype.confirm = function() {
+    console.log(this.name + 'は人間です');
+};
 
-function Food(name, price) {
-    Product.call(this, name, price);
-    this.category = 'food';
-}
+var Nobita = function(name) {
+    Human.call(this, name);
+};
 
-console.log(Product.__proto__)
-console.log(Object.create(Product.prototype))
-console.log(new Product())
+Nobita.prototype = Object.create(Human.prototype);
 
-Food.prototype = Object.create(Product.prototype);
-Food.prototype.constructor = Food;
-
-// console.log(new Food('cheese', 5).hello())
-new Food('cheese', 5).prototype;
-// expected output: "cheese"
+const obj = new Nobita('野比');
+obj.confirm()
