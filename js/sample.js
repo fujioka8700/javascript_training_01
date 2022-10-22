@@ -1,33 +1,24 @@
-/**
- * メッセージボタン
- * @constructor
- * @param {HTMLElement} element 対象のボタン要素
- */
-function MessageButton(element) {
-    /** @member {HTMLElement} target ボタン */
-    this.target = element;
-
-    /** @member {string} message メッセージ文言 */
-    this.message = element.dataset.message;
-
-    // prototype に追加したメソッドは this 経由で呼び出せる
-    this.handleClick();
+function Product(name, price) {
+    this.name = name;
+    this.price = price;
 }
 
-/**
- * クリックイベントのリスナーを登録する
- */
-MessageButton.prototype.handleClick = function () {
-    this.target.addEventListener('click', this.greeting.bind(this));
-};
+Product.prototype.hello = function() {
+    console.log('hello')
+}
 
-/**
- * メッセージを出力する
- */
-MessageButton.prototype.greeting = function () {
-    console.log(this.message);
-};
+function Food(name, price) {
+    Product.call(this, name, price);
+    this.category = 'food';
+}
 
-const btn = document.querySelector('button');
-console.log(btn)
-new MessageButton(btn);
+console.log(Product.__proto__)
+console.log(Object.create(Product.prototype))
+console.log(new Product())
+
+Food.prototype = Object.create(Product.prototype);
+Food.prototype.constructor = Food;
+
+// console.log(new Food('cheese', 5).hello())
+new Food('cheese', 5).prototype;
+// expected output: "cheese"
