@@ -1,16 +1,34 @@
-var Human = function(name) {
-    this.name = name;
-};
+class SampleOne {
+    constructor(myname, myage) {
+        this.name = myname;
+        this.age = myage;
+    }
 
-Human.prototype.confirm = function() {
-    console.log(this.name + 'は人間です');
-};
+    getName() {
+        return this.name;
+    }
+}
 
-var Nobita = function(name) {
-    Human.call(this, name);
-};
+SampleOne.prototype.hello = function() {
+    return 'Hello';
+}
 
-Nobita.prototype = Object.create(Human.prototype);
+class SampleThirds extends SampleOne {
+    constructor(myname, myage) {
+        super(myname, myage);
 
-const obj = new Nobita('野比');
-obj.confirm()
+        console.log(this.name);
+        console.log(this.age);
+    }
+    getMyName() {
+        return '私の名前は' + super.getName() + 'です';
+    }
+}
+
+SampleThirds.prototype.hello = function() {
+    return 'こんにちは';
+}
+
+const obj = new SampleThirds('花子', 30);
+console.log(obj.hello())
+console.log(obj.getMyName())
