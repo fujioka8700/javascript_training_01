@@ -1,29 +1,33 @@
-function Foo(name) {
-    this.name = name;
+/**
+ * メッセージボタン
+ * @constructor
+ * @param {HTMLElement} element 対象のボタン要素
+ */
+function MessageButton(element) {
+    /** @member {HTMLElement} target ボタン */
+    this.target = element;
+
+    /** @member {string} message メッセージ文言 */
+    this.message = element.dataset.message;
+
+    // prototype に追加したメソッドは this 経由で呼び出せる
+    this.handleClick();
 }
 
-Foo.prototype.hello = function () {
-    console.log(`Hello, I'm ${this.name}.`);
+/**
+ * クリックイベントのリスナーを登録する
+ */
+MessageButton.prototype.handleClick = function () {
+    this.target.addEventListener('click', this.greeting.bind(this));
 };
 
-const foo = new Foo('John');
+/**
+ * メッセージを出力する
+ */
+MessageButton.prototype.greeting = function () {
+    console.log(this.message);
+};
 
-function Bar(name) {
-    console.log(this)
-    Foo.call(this, name);
-}
-
-Bar.prototype = Object.create(Foo.prototype)
-Bar.prototype.constructor = Bar;
-console.log(Bar.prototype.constructor)
-
-Bar.prototype.goodbye = function() {
-    console.log('Goodbye!')
-}
-
-const bar = new Bar('Paul');
-bar.hello();
-bar.goodbye();
-
-// console.log(Foo.prototype)
-// console.log(Foo.prototype.__proto__)
+const btn = document.querySelector('button');
+console.log(btn)
+new MessageButton(btn);
