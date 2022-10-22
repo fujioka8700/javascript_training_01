@@ -1,25 +1,22 @@
-const arr = [1, 2, 3, 4]
+const data = {
+    firstName: '田中',
+    lastName: '太郎',
+    email: 'tarou@example.jp',
+};
 
-const [one, , three] = arr;
+function getFullName({firstName, lastName}) {
+    // return '田中 太郎';
+    return firstName + ' ' + lastName;
+}
 
-console.log(one) // -> 1
-console.log(three) // -> 3
+console.log(getFullName(data));
 
-const users = [
-    '太郎', '花子', '一郎'
-];
+/////////////////////////////////
+// 取り出すキーが実引数に、存在しなくてもエラーにはならない
+const obj = {
+    hello: 'world'
+};
 
-const [firstUser] = users;
-console.log(firstUser);
+const func = ({name}) => console.log(name);
 
-////////////////////////////////
-
-const arrOne = [1, 2, 3, 4];
-const arrTwo = [9, 8, 7];
-
-const arrThree = [
-    ...arrOne,
-    ...arrTwo,
-    "JavaScript"
-];
-console.log(arrThree) // -> [1, 2, 3, 9, 8, 7, "JavaScript"]
+func(obj);
