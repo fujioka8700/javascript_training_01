@@ -1,37 +1,22 @@
-const arr = [1,2,3].map(num => num * 2);
-console.log(arr);
-
-const arr2 = [1,2,3].map(function(num){
-    return num * 2;
-});
-
-console.log(arr2);
-
-setTimeout(() => console.log('ha ha'), 2000);
-
-const func = (a, b) => a + b;
-const n = func(10, 20);
-console.log(n);
-
-const obj = {
-    greeting: name => `Hello, ${name}`
-};
-
-console.log(obj.greeting('太郎'));
-
-///////////////////////////////
-
-const someArray = [1, 2, 3];
-
-function someFunc(item) {
-    console.log(item);
+const data = {
+    firstName: 'David',
+    lastName: 'Bowie',
+    email: 'starman@gmail.com'
 }
 
-var that = this;
-someArray.forEach(function(item) {
-    that.someFunc(item);
-});
+const {
+    firstName,
+    email
+} = data;
+console.log(firstName);
+console.log(email); // -> 'starman@gmail.com'
 
-someArray.forEach(item => {
-    this.someFunc(item);
-});
+const obj = {
+    a: 123,
+    b: 456
+};
+
+const {
+    a: num
+} = obj;
+console.log(num) // -> 123
