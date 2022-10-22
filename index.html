@@ -12,24 +12,7 @@
 </head>
 
 <body>
-    <label>アイスクリームの味を選択してください。
-        <select class="ice-cream" name="ice-cream">
-            <option value="">1 つ選択してください …</option>
-            <option value="chocolate">チョコレート</option>
-            <option value="sardine">イワシ</option>
-            <option value="vanilla">バニラ</option>
-        </select>
-    </label>
-    <div class="result"></div>
-
-    <script>
-        const selectElement = document.querySelector('.ice-cream');
-
-        selectElement.addEventListener('change', (event) => {
-            const result = document.querySelector('.result');
-            result.textContent = `${event.target.value}が好きですね`;
-        });
-    </script>
+    <p>prototypeオブジェクト</p>
 </body>
 
 </html>
