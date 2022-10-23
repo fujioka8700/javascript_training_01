@@ -1,26 +1,24 @@
-const objOne = {
-    greeting: function (name) {
-        return `Hello, ${name}さん`;
+const div = document.querySelector(`.rotate`);
+const rotate = div.animate(
+    [{
+            transform: 'rotate(0deg)'
+        },
+        {
+            transform: 'rotate(360deg)'
+        }
+    ], {
+        duration: 1000,
+        easing: 'ease',
+        iterations: Infinity
     }
-};
+);
+rotate.cancel();
 
-console.log(objOne.greeting('太郎'));
+div.addEventListener('mouseover', function() {
+    rotate.play();
+});
 
-const objTwo = {
-    greeting(name) {
-        return `Hello, ${name}くん`;
-    }
-};
-
-console.log(objTwo.greeting('花子'));
-
-///////////////////////////////
-
-const name = 'John Lennon'
-
-const obj = {
-    // name: name,
-    name
-};
-
-console.log(obj);
+div.addEventListener('mouseout', function() {
+    rotate.pause();
+    rotate.currentTime = 0;
+});
