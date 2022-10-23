@@ -1,24 +1,13 @@
-const div = document.querySelector(`.rotate`);
-const rotate = div.animate(
-    [{
-            transform: 'rotate(0deg)'
-        },
-        {
-            transform: 'rotate(360deg)'
-        }
-    ], {
-        duration: 1000,
-        easing: 'ease',
-        iterations: Infinity
-    }
-);
-rotate.cancel();
+const image = document.getElementById('image');
+const cover = document.getElementById('cover');
+const coverCheck = document.getElementById('cover-check');
 
-div.addEventListener('mouseover', function() {
-    rotate.play();
+image.addEventListener('mouseenter', () => {
+    cover.classList.add('run');
+    coverCheck.classList.add('cover-check_run');
 });
 
-div.addEventListener('mouseout', function() {
-    rotate.pause();
-    rotate.currentTime = 0;
+cover.addEventListener('mouseleave', () => {
+    cover.classList.remove('run');
+    coverCheck.classList.remove('cover-check_run');
 });
